@@ -28,8 +28,9 @@ export default function Preloader() {
 
   return (
     <div ref={rootRef} className="fixed inset-0 z-[100] bg-black flex items-center justify-center">
-      <div ref={logoRef} className="text-gold text-2xl tracking-wider2">
-        LUXURY STUDIO
+      <div ref={logoRef} className="flex items-center gap-3">
+        <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-8 w-auto" />
+        <span className="text-gold text-xl tracking-wider2">АКВА Альянс</span>
       </div>
     </div>
   );

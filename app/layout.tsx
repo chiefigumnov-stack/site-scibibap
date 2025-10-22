@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '../styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Luxury Space — Cinematic Studio',
-  description: 'Creating value through space. A cinematic, luxury one-page experience.',
+  title: 'АКВА Альянс — Пространства, создающие ценность',
+  description: 'АКВА Альянс: архитектура и пространственные решения с кинематографичным подходом.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

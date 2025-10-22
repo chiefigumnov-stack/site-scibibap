@@ -8,20 +8,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
-    title: 'Spatial Strategy',
-    description: 'Research-driven planning that aligns brand, business, and user needs.',
+    title: 'Трейдинг рыбы',
+    description: 'Оптовые поставки охлаждённой и замороженной рыбы. Контролируем качество и сроки.',
   },
   {
-    title: 'Experience Design',
-    description: 'Immersive environments and touchpoints with cinematic detail and flow.',
+    title: 'Корма для аквакультуры',
+    description: 'Подбор и поставки кормов под ваш цикл выращивания. Документы и логистика.',
   },
   {
-    title: 'Architecture',
-    description: 'From concept to execution, form meets function with precision.',
+    title: 'Логистика и холодовая цепь',
+    description: 'Температурный режим по всей цепочке. Проверенные перевозчики и склады.',
   },
   {
-    title: 'Production',
-    description: 'Technical direction, fabrication, and on-site delivery at scale.',
+    title: 'Консалтинг и аудит',
+    description: 'Помогаем оптимизировать закупки, хранение и качество сырья.',
   },
 ];
 
@@ -58,7 +58,7 @@ export default function Services() {
   return (
     <section ref={sectionRef} className="relative bg-ink py-24 md:py-32">
       <div className="container mx-auto px-6">
-        <h3 className="font-display text-3xl md:text-5xl mb-12">Services</h3>
+        <h3 className="font-display text-3xl md:text-5xl mb-12">Услуги</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s, i) => (
             <div

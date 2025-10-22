@@ -51,18 +51,21 @@ export default function Hero() {
     },
   };
 
-  const words = ['Creating', 'Value', 'Through', 'Space'];
+  const words = ['Создаём', 'ценность', 'через', 'пространство'];
 
   return (
     <section ref={rootRef} className="relative h-[100svh] w-full bg-black overflow-hidden">
       <Image
         src="/hero.jpg"
-        alt="Cinematic background"
+        alt="Водная текстура"
         fill
         priority
         className="object-cover opacity-70"
       />
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 ocean-gradient">
+        <div className="flex items-center gap-4 mb-6">
+          <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-10 w-auto rounded-sm" />
+        </div>
         <motion.h1
           ref={headlineRef}
           className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tight max-w-6xl leading-[0.95]"
@@ -77,7 +80,7 @@ export default function Hero() {
                   key={`${wi}-${i}`}
                   variants={letterVariants}
                   style={{ display: 'inline-block', willChange: 'transform' }}
-                  className={word === 'Value' ? 'text-gold' : ''}
+                  className={wi === 1 ? 'text-gold' : ''}
                 >
                   {ch}
                 </motion.span>
