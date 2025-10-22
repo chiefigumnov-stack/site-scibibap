@@ -51,7 +51,7 @@ export default function Hero() {
     },
   };
 
-  const words = ['Creating', 'Value', 'Through', 'Space'];
+  const words = ['Создаём', 'ценность', 'через', 'пространство'];
 
   return (
     <section ref={rootRef} className="relative h-[100svh] w-full bg-black overflow-hidden">
@@ -77,7 +77,7 @@ export default function Hero() {
                   key={`${wi}-${i}`}
                   variants={letterVariants}
                   style={{ display: 'inline-block', willChange: 'transform' }}
-                  className={word === 'Value' ? 'text-gold' : ''}
+                  className={wi === 1 ? 'text-gold' : ''}
                 >
                   {ch}
                 </motion.span>
