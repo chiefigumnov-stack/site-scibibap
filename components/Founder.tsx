@@ -42,14 +42,14 @@ export default function Founder() {
           <Image src="/founder.jpg" alt="Founder portrait" fill className="object-cover" />
         </div>
         <div ref={rightRef} className="space-y-6">
-          <h3 className="font-display text-3xl md:text-5xl">Our Vision</h3>
+          <h3 className="font-display text-3xl md:text-5xl">Наш подход</h3>
           <p className="text-white/80">
-            “We believe space is a strategic asset—when designed with intent, it compounds brand value.”
+            «Репутация строится на соблюдении холодовой цепи и точности сроков. Мы отвечаем цифрами»
           </p>
-          <p className="text-white/60">— Founder, Principal Designer</p>
+          <p className="text-white/60">— Основатель АКВА Альянс</p>
           <p className="text-white/70">
-            With decades of experience across architecture and experiential design, our studio operates at the
-            intersection of culture, craft, and technology.
+            Годы в аквакультуре и трейдинге. Широкая сеть поставщиков, контроль качества на каждом этапе,
+            прозрачные условия для партнёров.
           </p>
         </div>
       </div>

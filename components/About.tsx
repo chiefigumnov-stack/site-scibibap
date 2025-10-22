@@ -44,14 +44,13 @@ export default function About() {
     <section id="about" ref={sectionRef} className="relative bg-black py-24 md:py-32">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
         <div ref={leftRef} className="space-y-6">
-          <h2 className="font-display text-3xl md:text-5xl">Design That Performs</h2>
+          <h2 className="font-display text-3xl md:text-5xl">Экспертиза в аквакультуре</h2>
           <p className="text-white/80">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer euismod, nunc eget aliquet
-            pulvinar, ligula nunc finibus augue, nec facilisis ex massa in lorem. We balance aesthetics and
-            performance to create unforgettable spaces.
+            Торгуем рыбой и кормами по всей стране и за её пределами. От подбора поставщиков до логистики
+            — полный цикл под нашу ответственность и ваши KPI.
           </p>
           <p className="text-white/60">
-            Our multidisciplinary team works across architecture, brand environments, and experiential design.
+            Команда с опытом индустрии: проверенные каналы поставок, холодовая цепь, сертификация.
           </p>
         </div>
         <div ref={rightRef} className="relative h-80 md:h-[28rem] w-full">
