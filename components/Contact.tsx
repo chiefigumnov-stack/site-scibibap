@@ -35,7 +35,7 @@ export default function Contact() {
             <input className="bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Email" />
           </div>
           <input className="w-full bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Компания" />
-          <textarea className="w/full bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Ваш запрос: рыба, корма, объёмы, сроки" rows={5} />
+          <textarea className="w-full bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Ваш запрос: рыба, корма, объёмы, сроки" rows={5} />
           <button className="mt-4 rounded-full border border-gold px-8 py-3 text-sm tracking-wider2 text-gold hover:text-black hover:bg-gold transition-colors">Отправить</button>
         </form>
       </div>
