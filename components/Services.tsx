@@ -56,7 +56,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-ink py-24 md:py-32">
+    <section ref={sectionRef} className="relative bg-ink py-24 md:py-32 aqua-noise">
       <div className="container mx-auto px-6">
         <h3 className="font-display text-3xl md:text-5xl mb-12">Услуги</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
