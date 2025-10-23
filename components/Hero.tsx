@@ -28,6 +28,22 @@ export default function Hero() {
           { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' },
           '-=0.5'
         );
+
+      // parallax for watermark logo
+      const wm = document.querySelector('.logo-watermark');
+      if (wm) {
+        gsap.to(wm, {
+          yPercent: 8,
+          scale: 1.05,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+      }
     }, rootRef);
 
     return () => ctx.revert();
@@ -54,7 +70,7 @@ export default function Hero() {
   const words = ['Создаём', 'ценность', 'через', 'пространство'];
 
   return (
-    <section ref={rootRef} className="relative h-[100svh] w-full bg-black overflow-hidden">
+    <section ref={rootRef} className="relative h-[100svh] w-full bg-black overflow-hidden aqua-noise">
       <Image
         src="/hero.jpg"
         alt="Водная текстура"
@@ -101,6 +117,7 @@ export default function Hero() {
         </motion.a>
       </div>
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 to-black/10" />
+      <div className="absolute inset-0 pointer-events-none logo-watermark" />
     </section>
   );
 }

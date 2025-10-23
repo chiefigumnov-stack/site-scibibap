@@ -59,7 +59,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-black py-24 md:py-32">
+    <section ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise">
       <div className="container mx-auto px-6 mb-10">
         <h3 className="font-display text-3xl md:text-5xl">Кейсы поставок</h3>
       </div>

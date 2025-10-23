@@ -38,6 +38,25 @@ html.lenis, html.lenis body {
   background-image: radial-gradient(60% 80% at 30% 30%, rgba(56, 189, 248, 0.18), transparent 60%),
                     radial-gradient(50% 70% at 70% 70%, rgba(59, 130, 246, 0.14), transparent 60%);
 }
+.aqua-noise {
+  position: relative;
+}
+.aqua-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/noise.png');
+  opacity: 0.05;
+  pointer-events: none;
+}
+.logo-watermark {
+  background-image: url('/logo-akva.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.06;
+  filter: blur(0.3px);
+}
 .text-gold { color: #d4af37; }
 .bg-gold { background-color: #d4af37; }
 .border-gold { border-color: #d4af37; }
