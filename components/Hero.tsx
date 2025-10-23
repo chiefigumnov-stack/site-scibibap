@@ -32,10 +32,7 @@ export default function Hero() {
       // parallax for watermark logo
       const wm = document.querySelector('.logo-watermark');
       if (wm) {
-        gsap.to(wm, {
-          yPercent: 8,
-          scale: 1.05,
-          ease: 'none',
+        const par = gsap.timeline({
           scrollTrigger: {
             trigger: rootRef.current,
             start: 'top top',
@@ -43,6 +40,8 @@ export default function Hero() {
             scrub: true,
           },
         });
+        par.to(wm, { yPercent: 10, scale: 1.08, duration: 1, ease: 'none' });
+        par.to(wm, { filter: 'blur(1px)', opacity: 0.08, duration: 1, ease: 'none' }, 0);
       }
     }, rootRef);
 
