@@ -33,23 +33,20 @@ export default function Services() {
     const el = sectionRef.current;
     if (!el) return;
     const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: { ease: 'power3.out' },
+        scrollTrigger: { trigger: el, start: 'top 75%' },
+      });
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
-        gsap.fromTo(
+        tl.fromTo(
           card,
-          { y: 40, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            ease: 'power3.out',
-            delay: index * 0.08,
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 75%',
-            },
-          }
+          { y: 50, opacity: 0, rotateX: 8, transformOrigin: '50% 100%' },
+          { y: 0, opacity: 1, rotateX: 0, duration: 0.7 },
+          index * 0.08
         );
+        tl.to(card, { y: -6, duration: 0.6, ease: 'sine.inOut' }, index * 0.08 + 0.3);
+        tl.to(card, { y: 0, duration: 0.6, ease: 'sine.inOut' }, index * 0.08 + 0.6);
       });
     }, el);
     return () => ctx.revert();

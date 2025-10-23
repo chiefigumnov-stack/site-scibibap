@@ -52,18 +52,19 @@ export default function Hero() {
   const containerVariants: Variants = {
     animate: {
       transition: {
-        staggerChildren: 0.035,
+        staggerChildren: 0.045,
       },
     },
   };
 
   const letterVariants: Variants = {
-    initial: { opacity: 0, y: 18, rotateX: 15 },
+    initial: { opacity: 0, y: 24, rotateX: 15, skewY: 2 },
     animate: {
       opacity: 1,
       y: 0,
       rotateX: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+      skewY: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
