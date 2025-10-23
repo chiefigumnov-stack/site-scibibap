@@ -84,7 +84,7 @@ export default function Hero() {
         </div>
         <motion.h1
           ref={headlineRef}
-          className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tight max-w-6xl leading-[0.95]"
+          className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tight max-w-6xl leading-[0.95] aqua-shine"
           variants={containerVariants}
           initial="initial"
           animate="animate"

@@ -9,10 +9,12 @@ import dynamic from 'next/dynamic'
 
 const Preloader = dynamic(() => import('@/components/Preloader'), { ssr: false })
 const Map = dynamic(() => import('@/components/MapRussia'), { ssr: false })
+const CursorSpotlight = dynamic(() => import('@/components/CursorSpotlight'), { ssr: false })
 
 export default function Page() {
   return (
     <main className="relative">
+      <CursorSpotlight />
       <Preloader />
       <Hero />
       <About />

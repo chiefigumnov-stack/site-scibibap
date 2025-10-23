@@ -94,6 +94,32 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* Animated global aquamarine gradient */
+@keyframes aquaGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.aqua-animated-bg {
+  background-image: linear-gradient(120deg, #02161b, #06222a, #031017);
+  background-size: 200% 200%;
+  animation: aquaGradientShift 18s ease-in-out infinite;
+}
+
+/* Headline shimmer */
+@keyframes aquaTextShine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.aqua-shine {
+  background-image: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.85), rgba(255,255,255,0));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aquaTextShine 6s linear infinite;
+}
+
 /* Shimmer highlight for aqua UI */
 @keyframes aquaShimmer {
   0% { transform: translateX(-100%); opacity: 0; }
