@@ -99,14 +99,16 @@ export default function MapRussia() {
                 if (f.geometry.type === 'Polygon') {
                   const coords = f.geometry.coordinates as unknown as number[][][]; // rings
                   const d = pathFromPolygon(coords, width, height);
+                  const isActive = activeName===name;
                   return (
-                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${activeName===name? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke="#0b2b3a" strokeWidth={1} fillRule="evenodd" />
+                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${isActive? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke={isActive? '#22d3ee' : '#0b2b3a'} strokeWidth={isActive? 2 : 1} fillRule="evenodd" />
                   );
                 } else if (f.geometry.type === 'MultiPolygon') {
                   const polys = f.geometry.coordinates as unknown as number[][][][]; // polygons->rings
                   const d = polys.map((poly) => pathFromPolygon(poly as unknown as number[][][], width, height)).join(' ');
+                  const isActive = activeName===name;
                   return (
-                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${activeName===name? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke="#0b2b3a" strokeWidth={1} fillRule="evenodd" />
+                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${isActive? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke={isActive? '#22d3ee' : '#0b2b3a'} strokeWidth={isActive? 2 : 1} fillRule="evenodd" />
                   );
                 }
                 return null;

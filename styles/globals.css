@@ -8,7 +8,7 @@
 }
 
 html, body {
-  background-color: #000;
+  background: radial-gradient(1200px 800px at 50% -10%, #082026 0%, #02070a 60%), #000;
   color: #fff;
   overflow-x: hidden;
 }

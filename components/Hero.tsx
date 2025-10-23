@@ -96,7 +96,7 @@ export default function Hero() {
                   key={`${wi}-${i}`}
                   variants={letterVariants}
                   style={{ display: 'inline-block', willChange: 'transform' }}
-                  className={wi === 1 ? 'text-gold' : ''}
+                  className={wi === 1 ? 'text-cyan' : ''}
                 >
                   {ch}
                 </motion.span>
@@ -111,7 +111,7 @@ export default function Hero() {
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
           href="#about"
-          className="mt-10 inline-flex items-center gap-2 rounded-full border border-gold px-8 py-3 text-sm tracking-wider2 text-gold hover:text-black hover:bg-gold transition-colors"
+          className="mt-10 inline-flex items-center gap-2 rounded-full border border-cyan/40 px-8 py-3 text-sm tracking-wider2 text-cyan hover:text-black hover:bg-cyan/80 transition-colors"
         >
           Explore Our Work
         </motion.a>

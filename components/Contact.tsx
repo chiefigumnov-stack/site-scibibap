@@ -31,12 +31,12 @@ export default function Contact() {
         <h3 className="font-display text-3xl md:text-5xl mb-10">Свяжитесь с нами</h3>
         <form className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input className="bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Name" />
-            <input className="bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Email" />
+            <input className="bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-cyan" placeholder="Name" />
+            <input className="bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-cyan" placeholder="Email" />
           </div>
-          <input className="w-full bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Компания" />
-          <textarea className="w-full bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-gold" placeholder="Ваш запрос: рыба, корма, объёмы, сроки" rows={5} />
-          <button className="mt-4 rounded-full border border-gold px-8 py-3 text-sm tracking-wider2 text-gold hover:text-black hover:bg-gold transition-colors">Отправить</button>
+          <input className="w-full bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-cyan" placeholder="Компания" />
+          <textarea className="w-full bg-ink/60 border border-white/10 rounded-md p-3 outline-none focus:border-cyan" placeholder="Ваш запрос: рыба, корма, объёмы, сроки" rows={5} />
+          <button className="mt-4 rounded-full border border-cyan/40 px-8 py-3 text-sm tracking-wider2 text-cyan hover:text-black hover:bg-cyan/80 transition-colors">Отправить</button>
         </form>
       </div>
     </section>
