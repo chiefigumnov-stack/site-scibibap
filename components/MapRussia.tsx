@@ -29,10 +29,16 @@ function prettyCapacity(value: number) {
   return new Intl.NumberFormat('ru-RU').format(value) + ' т/год';
 }
 
-function project([lon, lat]: [number, number], w: number, h: number) {
-  // Equirectangular projection (placeholder); for better accuracy use mercator via d3-geo in future
+function project([rawLon, rawLat]: [number, number], w: number, h: number) {
+  // Web Mercator-like projection with longitude wrap
+  let lon = rawLon;
+  const lat = Math.max(-85, Math.min(85, rawLat)); // clamp to avoid infinity
+  if (lon > 180) lon -= 360;
+  if (lon < -180) lon += 360;
   const x = ((lon + 180) / 360) * w;
-  const y = ((90 - lat) / 180) * h;
+  const phi = (lat * Math.PI) / 180;
+  const mercY = Math.log(Math.tan(Math.PI / 4 + phi / 2));
+  const y = (1 - mercY / Math.PI) * (h / 2);
   return [x, y];
 }
 
@@ -91,16 +97,16 @@ export default function MapRussia() {
               {geo?.features.map((f, idx) => {
                 const name = (f.properties.name as string) || `Region ${idx}`;
                 if (f.geometry.type === 'Polygon') {
-                  const d = pathFromPolygon([f.geometry.coordinates as any], width, height);
+                  const coords = f.geometry.coordinates as unknown as number[][][]; // rings
+                  const d = pathFromPolygon(coords, width, height);
                   return (
-                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${activeName===name? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke="#0b2b3a" strokeWidth={1} />
+                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${activeName===name? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke="#0b2b3a" strokeWidth={1} fillRule="evenodd" />
                   );
                 } else if (f.geometry.type === 'MultiPolygon') {
-                  const d = (f.geometry.coordinates as any[])
-                    .map((poly) => pathFromPolygon([poly as any], width, height))
-                    .join(' ');
+                  const polys = f.geometry.coordinates as unknown as number[][][][]; // polygons->rings
+                  const d = polys.map((poly) => pathFromPolygon(poly as unknown as number[][][], width, height)).join(' ');
                   return (
-                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${activeName===name? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke="#0b2b3a" strokeWidth={1} />
+                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${activeName===name? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke="#0b2b3a" strokeWidth={1} fillRule="evenodd" />
                   );
                 }
                 return null;
