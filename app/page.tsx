@@ -1,12 +1,14 @@
-import dynamic from 'next/dynamic'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Services from '@/components/Services'
 import Portfolio from '@/components/Portfolio'
 import Founder from '@/components/Founder'
 import Contact from '@/components/Contact'
+ 
+import dynamic from 'next/dynamic'
 
 const Preloader = dynamic(() => import('@/components/Preloader'), { ssr: false })
+const Map = dynamic(() => import('@/components/Map'), { ssr: false })
 
 export default function Page() {
   return (
@@ -16,6 +18,7 @@ export default function Page() {
       <About />
       <Services />
       <Portfolio />
+      <Map />
       <Founder />
       <Contact />
     </main>
