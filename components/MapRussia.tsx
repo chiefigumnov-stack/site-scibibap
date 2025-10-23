@@ -59,6 +59,8 @@ export default function MapRussia() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [geo, setGeo] = useState<GeoJSON | null>(null);
   const [activeName, setActiveName] = useState<string | null>(null);
+  const [hoverName, setHoverName] = useState<string | null>(null);
+  const [vp, setVp] = useState({ x: 0, y: 0, k: 1 });
 
   useEffect(() => {
     fetch('/data/russia.geojson')
@@ -93,27 +95,43 @@ export default function MapRussia() {
           <h3 className="font-display text-3xl md:text-5xl">Карта России (точная геометрия)</h3>
           <p className="text-white/70 max-w-2xl">Кликайте по регионам — справа появится информация по хозяйствам. Позже данные подтянем из Supabase.</p>
           <div className="relative w-full aspect-[16/9] bg-ink/60 rounded-2xl overflow-hidden border border-cyan/15 shadow-xl">
-            <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full">
+            <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full" onWheel={(e)=>{
+              e.preventDefault();
+              const delta = -Math.sign(e.deltaY) * 0.1;
+              setVp((p)=>({ ...p, k: Math.max(0.6, Math.min(3, p.k + delta)) }));
+            }} onMouseDown={(e)=>{
+              const startX=e.clientX, startY=e.clientY; const start=vp;
+              const onMove=(ev:MouseEvent)=>{ setVp((p)=>({ ...p, x: start.x + (ev.clientX-startX), y: start.y + (ev.clientY-startY) })); };
+              const onUp=()=>{ window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseup', onUp); };
+              window.addEventListener('mousemove', onMove); window.addEventListener('mouseup', onUp);
+            }}>
+              <g transform={`translate(${vp.x} ${vp.y}) scale(${vp.k})`}>
               {geo?.features.map((f, idx) => {
                 const name = (f.properties.name as string) || `Region ${idx}`;
                 if (f.geometry.type === 'Polygon') {
                   const coords = f.geometry.coordinates as unknown as number[][][]; // rings
                   const d = pathFromPolygon(coords, width, height);
-                  const isActive = activeName===name;
+                  const isActive = activeName===name; const isHover = hoverName===name;
                   return (
-                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${isActive? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke={isActive? '#22d3ee' : '#0b2b3a'} strokeWidth={isActive? 2 : 1} fillRule="evenodd" />
+                    <path key={idx} d={d} onClick={() => setActiveName(name)} onMouseEnter={()=>setHoverName(name)} onMouseLeave={()=>setHoverName(null)} className={`cursor-pointer transition-all duration-200 ${isActive? 'fill-cyan/40' : isHover? 'fill-cyan/25' : 'fill-ink'}`} stroke={isActive? '#22d3ee' : isHover? '#1db8c8' : '#0b2b3a'} strokeWidth={isActive? 2 : 1} fillRule="evenodd" />
                   );
                 } else if (f.geometry.type === 'MultiPolygon') {
                   const polys = f.geometry.coordinates as unknown as number[][][][]; // polygons->rings
                   const d = polys.map((poly) => pathFromPolygon(poly as unknown as number[][][], width, height)).join(' ');
-                  const isActive = activeName===name;
+                  const isActive = activeName===name; const isHover = hoverName===name;
                   return (
-                    <path key={idx} d={d} onClick={() => setActiveName(name)} className={`cursor-pointer transition-all duration-300 ${isActive? 'fill-cyan/40' : 'fill-ink'} hover:fill-cyan/30`} stroke={isActive? '#22d3ee' : '#0b2b3a'} strokeWidth={isActive? 2 : 1} fillRule="evenodd" />
+                    <path key={idx} d={d} onClick={() => setActiveName(name)} onMouseEnter={()=>setHoverName(name)} onMouseLeave={()=>setHoverName(null)} className={`cursor-pointer transition-all duration-200 ${isActive? 'fill-cyan/40' : isHover? 'fill-cyan/25' : 'fill-ink'}`} stroke={isActive? '#22d3ee' : isHover? '#1db8c8' : '#0b2b3a'} strokeWidth={isActive? 2 : 1} fillRule="evenodd" />
                   );
                 }
                 return null;
               })}
+              </g>
             </svg>
+            {hoverName && (
+              <div className="pointer-events-none absolute left-2 top-2 rounded-md bg-black/70 border border-cyan/20 px-3 py-1 text-sm text-cyan">
+                {hoverName}
+              </div>
+            )}
           </div>
         </div>
         <div className="map-panel relative rounded-2xl border border-cyan/15 bg-black/40 p-6 backdrop-blur-md min-h-[20rem] order-1 lg:order-2">

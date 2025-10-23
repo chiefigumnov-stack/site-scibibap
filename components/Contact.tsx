@@ -26,7 +26,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise">
+    <section ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise aqua-grid">
       <div className="container mx-auto px-6 max-w-3xl">
         <h3 className="font-display text-3xl md:text-5xl mb-10">Свяжитесь с нами</h3>
         <form className="space-y-4">
