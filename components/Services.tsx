@@ -64,7 +64,7 @@ export default function Services() {
               ref={(el: HTMLDivElement | null) => {
                 cardsRef.current[i] = el;
               }}
-              className="group relative rounded-xl border border-cyan/10 bg-gradient-to-br from-ink/70 to-navy/60 p-6 backdrop-blur-md overflow-hidden"
+              className="group relative rounded-2xl border border-cyan/15 bg-gradient-to-br from-ink/70 to-navy/60 p-6 backdrop-blur-md overflow-hidden"
             >
               <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(34,211,238,.18) 0%, transparent 70%)' }} />

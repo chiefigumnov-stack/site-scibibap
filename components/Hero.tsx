@@ -79,8 +79,8 @@ export default function Hero() {
         className="object-cover opacity-70"
       />
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 ocean-gradient">
-        <div className="flex items-center gap-4 mb-6">
-          <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-10 w-auto rounded-sm" />
+        <div className="flex items-center gap-4 mb-8">
+          <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-12 w-auto rounded-sm" />
         </div>
         <motion.h1
           ref={headlineRef}
@@ -96,7 +96,7 @@ export default function Hero() {
                   key={`${wi}-${i}`}
                   variants={letterVariants}
                   style={{ display: 'inline-block', willChange: 'transform' }}
-                  className={wi === 1 ? 'text-gold' : ''}
+                  className={wi === 1 ? 'text-cyan' : ''}
                 >
                   {ch}
                 </motion.span>
@@ -111,7 +111,7 @@ export default function Hero() {
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
           href="#about"
-          className="mt-10 inline-flex items-center gap-2 rounded-full border border-gold px-8 py-3 text-sm tracking-wider2 text-gold hover:text-black hover:bg-gold transition-colors"
+          className="mt-10 inline-flex items-center gap-2 rounded-full border border-cyan/40 px-8 py-3 text-sm tracking-wider2 text-cyan hover:text-black hover:bg-cyan/80 transition-colors"
         >
           Explore Our Work
         </motion.a>
