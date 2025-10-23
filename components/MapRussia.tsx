@@ -84,8 +84,8 @@ export default function MapRussia() {
     return () => ctx.revert();
   }, []);
 
-  const width = 1200;
-  const height = 720;
+  const width = 1600;
+  const height = 900;
   const active: Region | null = activeName && STUB[activeName] ? STUB[activeName] : null;
 
   return (
