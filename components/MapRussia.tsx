@@ -82,17 +82,17 @@ export default function MapRussia() {
     return () => ctx.revert();
   }, []);
 
-  const width = 1000;
-  const height = 600;
+  const width = 1200;
+  const height = 720;
   const active: Region | null = activeName && STUB[activeName] ? STUB[activeName] : null;
 
   return (
     <section ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise">
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <div className="space-y-4">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="space-y-4 order-2 lg:order-1">
           <h3 className="font-display text-3xl md:text-5xl">Карта России (точная геометрия)</h3>
           <p className="text-white/70 max-w-2xl">Кликайте по регионам — справа появится информация по хозяйствам. Позже данные подтянем из Supabase.</p>
-          <div className="relative w-full aspect-[5/3] bg-ink/60 rounded-lg overflow-hidden border border-white/10">
+          <div className="relative w-full aspect-[16/9] bg-ink/60 rounded-2xl overflow-hidden border border-cyan/15 shadow-xl">
             <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full">
               {geo?.features.map((f, idx) => {
                 const name = (f.properties.name as string) || `Region ${idx}`;
@@ -114,7 +114,7 @@ export default function MapRussia() {
             </svg>
           </div>
         </div>
-        <div className="map-panel relative rounded-lg border border-white/10 bg-black/40 p-6 backdrop-blur-sm min-h-[16rem]">
+        <div className="map-panel relative rounded-2xl border border-cyan/15 bg-black/40 p-6 backdrop-blur-md min-h-[20rem] order-1 lg:order-2">
           <h4 className="text-2xl font-semibold text-cyan mb-2">{active ? active.name : 'Выберите регион'}</h4>
           {active ? (
             <div className="space-y-3">

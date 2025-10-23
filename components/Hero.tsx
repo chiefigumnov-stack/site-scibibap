@@ -79,8 +79,8 @@ export default function Hero() {
         className="object-cover opacity-70"
       />
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 ocean-gradient">
-        <div className="flex items-center gap-4 mb-6">
-          <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-10 w-auto rounded-sm" />
+        <div className="flex items-center gap-4 mb-8">
+          <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-12 w-auto rounded-sm" />
         </div>
         <motion.h1
           ref={headlineRef}
