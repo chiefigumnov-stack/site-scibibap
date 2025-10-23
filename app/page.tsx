@@ -8,7 +8,7 @@ import Contact from '@/components/Contact'
 import dynamic from 'next/dynamic'
 
 const Preloader = dynamic(() => import('@/components/Preloader'), { ssr: false })
-const Map = dynamic(() => import('@/components/Map'), { ssr: false })
+const Map = dynamic(() => import('@/components/MapFull'), { ssr: false })
 
 export default function Page() {
   return (

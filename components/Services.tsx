@@ -63,13 +63,17 @@ export default function Services() {
               ref={(el: HTMLDivElement | null) => {
                 cardsRef.current[i] = el;
               }}
-              className="group relative rounded-lg border border-white/10 bg-black/40 p-6 backdrop-blur-sm overflow-hidden"
+              className="group relative rounded-xl border border-cyan/10 bg-gradient-to-br from-ink/70 to-navy/60 p-6 backdrop-blur-md overflow-hidden"
             >
-              <div className="absolute -inset-y-10 -left-10 right-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="gold-gradient w-40 h-40 rounded-full blur-3xl" />
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(34,211,238,.18) 0%, transparent 70%)' }} />
               </div>
-              <h4 className="text-xl font-semibold text-gold">{s.title}</h4>
-              <p className="mt-3 text-white/80">{s.description}</p>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan/20 px-3 py-1 text-xs text-cyan/90 bg-black/30">Аквакультура</div>
+                <h4 className="mt-4 text-xl font-semibold text-cyan/90">{s.title}</h4>
+                <p className="mt-3 text-white/80">{s.description}</p>
+              </div>
+              <div className="absolute right-4 bottom-4 text-white/50 text-xs">Подробнее →</div>
             </div>
           ))}
         </div>
