@@ -41,7 +41,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise">
+    <section id="about" ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise aqua-grid">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
         <div ref={leftRef} className="space-y-6">
           <h2 className="font-display text-3xl md:text-5xl">Экспертиза в аквакультуре</h2>

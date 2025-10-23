@@ -70,7 +70,7 @@ export default function Hero() {
   const words = ['Создаём', 'ценность', 'через', 'пространство'];
 
   return (
-    <section ref={rootRef} className="relative h-[100svh] w-full bg-black overflow-hidden aqua-noise">
+    <section ref={rootRef} className="relative h-[100svh] w-full bg-black overflow-hidden aqua-noise aqua-caustics">
       <Image
         src="/hero.jpg"
         alt="Водная текстура"

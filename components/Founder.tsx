@@ -36,7 +36,7 @@ export default function Founder() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-ink py-24 md:py-32 aqua-noise">
+    <section ref={sectionRef} className="relative bg-ink py-24 md:py-32 aqua-noise aqua-caustics">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">
         <div ref={leftRef} className="relative h-80 md:h-[30rem] w-full overflow-hidden rounded-md">
           <Image src="/founder.jpg" alt="Founder portrait" fill className="object-cover" />
