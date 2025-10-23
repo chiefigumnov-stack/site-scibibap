@@ -59,6 +59,36 @@ html.lenis, html.lenis body {
   opacity: 0.06;
   filter: blur(0.3px);
 }
+
+/* Shimmer highlight for aqua UI */
+@keyframes aquaShimmer {
+  0% { transform: translateX(-100%); opacity: 0; }
+  30% { opacity: .25; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+.aqua-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -50%;
+  height: 100%; width: 40%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.15), transparent);
+  animation: aquaShimmer 2.2s ease-in-out infinite;
+}
+
+/* Ripple ping for map clicks */
+@keyframes aquaRipple {
+  0% { transform: scale(0.5); opacity: .5; }
+  70% { opacity: .15; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.aqua-ripple {
+  pointer-events: none;
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(34,211,238,.6) 0%, rgba(34,211,238,.2) 60%, transparent 70%);
+  animation: aquaRipple 1.6s ease-out forwards;
+}
 .text-gold { color: #d4af37; }
 .bg-gold { background-color: #d4af37; }
 .border-gold { border-color: #d4af37; }
