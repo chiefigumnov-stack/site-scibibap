@@ -1,1 +1,10 @@
-{}
+{
+  "components/Hero.tsx -> ./HeroCanvas": {
+    "id": 1138,
+    "files": [
+      "static/chunks/b536a0f1.23362dcd258ae5a7.js",
+      "static/chunks/217.ebb85840caf53f57.js",
+      "static/chunks/138.4dd38283ee206a33.js"
+    ]
+  }
+}

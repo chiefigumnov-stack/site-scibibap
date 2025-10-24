@@ -6,6 +6,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, Variants } from 'framer-motion';
 import { useLenisScroll } from '@/hooks/useLenisScroll';
+import dynamic from 'next/dynamic'
+const HeroCanvas = dynamic(() => import('./HeroCanvas'), { ssr: false })
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,6 +80,7 @@ export default function Hero() {
         priority
         className="object-cover opacity-70"
       />
+      <HeroCanvas />
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 ocean-gradient">
         <div className="flex items-center gap-4 mb-8">
           <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-12 w-auto rounded-sm" />
