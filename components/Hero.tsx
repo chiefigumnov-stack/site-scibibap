@@ -80,12 +80,10 @@ export default function Hero() {
       />
       <HeroCanvas />
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 ocean-gradient">
-        <div className="flex items-center gap-4 mb-8">
-          <img src="/logo-akva.jpg" alt="АКВА Альянс" className="h-12 w-auto rounded-sm" />
-        </div>
+        <div className="mb-8" />
         <motion.h1
           ref={headlineRef}
-          className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tight max-w-6xl leading-[0.95] aqua-shine"
+          className="font-display text-5xl md:text-7xl lg:text-8xl tracking-tight max-w-6xl leading-[0.95] aqua-shine headline-glow"
           variants={containerVariants}
           initial="initial"
           animate="animate"
@@ -112,13 +110,13 @@ export default function Hero() {
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
           href="#about"
-          className="mt-10 inline-flex items-center gap-2 rounded-full border border-cyan/40 px-8 py-3 text-sm tracking-wider2 text-cyan hover:text-black hover:bg-cyan/80 transition-colors"
+          className="mt-10 inline-flex items-center gap-2 rounded-full border border-cyan/40 px-8 py-3 text-sm tracking-wider2 text-cyan bg-white/5 backdrop-blur-sm hover:text-black hover:bg-cyan/80 transition-all shadow-[0_0_30px_rgba(34,211,238,0.15)] hover:shadow-[0_0_40px_rgba(34,211,238,0.35)]"
         >
           Explore Our Work
         </motion.a>
       </div>
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 to-black/10" />
       <div className="absolute inset-0 pointer-events-none logo-watermark" />
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 to-black/10" />
     </section>
   );
 }

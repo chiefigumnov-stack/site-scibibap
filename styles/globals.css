@@ -52,11 +52,12 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 .logo-watermark {
-  background-image: url('/logo-akva.jpg');
+  /* Use vector logo as full-bleed background */
+  background-image: url('/logo-akva.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  opacity: 0.06;
+  background-size: cover; /* make it full-size background of the block */
+  opacity: 0.08;
   filter: blur(0.3px);
 }
 
@@ -118,6 +119,11 @@ html.lenis, html.lenis body {
   background-clip: text;
   color: transparent;
   animation: aquaTextShine 6s linear infinite;
+}
+
+/* Subtle readable glow for main headline */
+.headline-glow {
+  text-shadow: 0 2px 24px rgba(34, 211, 238, 0.35);
 }
 
 /* Shimmer highlight for aqua UI */

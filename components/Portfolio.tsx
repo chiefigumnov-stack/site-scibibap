@@ -65,8 +65,19 @@ export default function Portfolio() {
       </div>
       <div ref={trackRef} className="flex gap-6 px-6 will-change-transform">
         {gallery.map((src, idx) => (
-          <div key={src} data-item className="relative h-72 md:h-96 min-w-[80vw] md:min-w-[40vw] lg:min-w-[32vw] overflow-hidden rounded-md">
-            <Image src={src} alt={`Project ${idx + 1}`} fill className="object-cover" />
+          <div
+            key={src}
+            data-item
+            className="relative h-72 md:h-96 min-w-[85vw] md:min-w-[45vw] lg:min-w-[33vw] overflow-hidden rounded-xl border border-white/10"
+          >
+            <Image
+              src={src}
+              alt={`Project ${idx + 1}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, 33vw"
+              priority={idx === 0}
+            />
           </div>
         ))}
       </div>
