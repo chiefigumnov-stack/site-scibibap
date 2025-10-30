@@ -5,14 +5,12 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, Variants } from 'framer-motion';
-import { useLenisScroll } from '@/hooks/useLenisScroll';
 import dynamic from 'next/dynamic'
 const HeroCanvas = dynamic(() => import('./HeroCanvas'), { ssr: false })
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  useLenisScroll();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const headlineRef = useRef<HTMLHeadingElement | null>(null);
   const subRef = useRef<HTMLParagraphElement | null>(null);

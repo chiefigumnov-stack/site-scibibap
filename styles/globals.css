@@ -152,3 +152,16 @@ html.lenis, html.lenis body {
 .text-gold { color: #d4af37; }
 .bg-gold { background-color: #d4af37; }
 .border-gold { border-color: #d4af37; }
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .aqua-animated-bg { animation: none !important; }
+  .aqua-caustics::before { animation: none !important; }
+  .aqua-shine { animation: none !important; }
+}
