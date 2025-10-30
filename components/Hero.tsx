@@ -104,7 +104,7 @@ export default function Hero() {
           ))}
         </motion.h1>
         <p ref={subRef} className="mt-6 max-w-3xl text-lg md:text-xl text-white/80">
-          We craft transformative environments that elevate brands and experiences.
+          Мы создаём трансформирующие пространства, усиливающие бренды и впечатления.
         </p>
         <motion.a
           whileHover={{ scale: 1.04 }}
@@ -112,7 +112,7 @@ export default function Hero() {
           href="#about"
           className="mt-10 inline-flex items-center gap-2 rounded-full border border-cyan/40 px-8 py-3 text-sm tracking-wider2 text-cyan bg-white/5 backdrop-blur-sm hover:text-black hover:bg-cyan/80 transition-all shadow-[0_0_30px_rgba(34,211,238,0.15)] hover:shadow-[0_0_40px_rgba(34,211,238,0.35)]"
         >
-          Explore Our Work
+          Смотреть проекты
         </motion.a>
       </div>
       <div className="absolute inset-0 pointer-events-none logo-watermark" />
