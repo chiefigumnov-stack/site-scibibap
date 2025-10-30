@@ -36,6 +36,19 @@ export default function About() {
           start: 'top 80%',
         },
       });
+
+      // subtle parallax on image
+      gsap.to(rightRef.current, {
+        yPercent: 6,
+        scale: 1.03,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
     }, el);
     return () => ctx.revert();
   }, []);
@@ -53,7 +66,7 @@ export default function About() {
             Команда с опытом индустрии: проверенные каналы поставок, холодовая цепь, сертификация.
           </p>
         </div>
-        <div ref={rightRef} className="relative h-80 md:h-[28rem] w-full">
+        <div ref={rightRef} className="relative h-80 md:h-[28rem] w-full will-change-transform">
           <Image src="/about.jpg" alt="About visual" fill className="object-cover rounded-md" />
         </div>
       </div>

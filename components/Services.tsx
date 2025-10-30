@@ -64,7 +64,7 @@ export default function Services() {
               ref={(el: HTMLDivElement | null) => {
                 cardsRef.current[i] = el;
               }}
-              className="group relative rounded-2xl border border-cyan/15 bg-gradient-to-br from-ink/70 to-navy/60 p-6 backdrop-blur-md overflow-hidden"
+              className="group relative rounded-2xl border border-cyan/15 bg-gradient-to-br from-ink/70 to-navy/60 p-6 backdrop-blur-md overflow-hidden transition-transform duration-500 will-change-transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(34,211,238,0.25)]"
             >
               <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute -left-16 top-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(34,211,238,.18) 0%, transparent 70%)' }} />
@@ -74,7 +74,7 @@ export default function Services() {
                 <h4 className="mt-4 text-xl font-semibold text-cyan/90">{s.title}</h4>
                 <p className="mt-3 text-white/80">{s.description}</p>
               </div>
-              <div className="absolute right-4 bottom-4 text-white/50 text-xs">Подробнее →</div>
+              <div className="absolute right-4 bottom-4 text-white/50 text-xs group-hover:text-cyan/80 transition-colors">Подробнее →</div>
             </div>
           ))}
         </div>
