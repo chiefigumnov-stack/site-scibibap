@@ -52,13 +52,14 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 .logo-watermark {
-  /* Use vector logo as full-bleed background */
+  /* Use vector logo as centered watermark */
   background-image: url('/logo-akva.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover; /* make it full-size background of the block */
-  opacity: 0.08;
-  filter: blur(0.3px);
+  background-size: contain;
+  opacity: 0.06;
+  filter: drop-shadow(0 0 14px rgba(34,211,238,0.12));
+  will-change: transform, opacity;
 }
 
 /* Caustics-like animated overlay */
