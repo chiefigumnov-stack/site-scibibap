@@ -10,7 +10,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 type Farm = { name: string; capacityTons: number; contact: string };
-type Region = { id: string; name: string; farms: Farm[] };
 
 type GeoFeature = {
   type: 'Feature';
@@ -19,11 +18,6 @@ type GeoFeature = {
 };
 
 type GeoJSON = { type: 'FeatureCollection'; features: GeoFeature[] };
-
-const STUB: Record<string, Region> = {
-  'Saint Petersburg City': { id: 'RU-NW', name: 'Санкт‑Петербург', farms: [{ name: 'Балтика', capacityTons: 1200, contact: '+7 (812) 000-00-00' }]},
-  'Sakhalin Oblast': { id: 'RU-FE', name: 'Сахалин', farms: [{ name: 'Сахалин Морепродукт', capacityTons: 3000, contact: '+7 (4242) 333-33-33' }]},
-};
 
 function prettyCapacity(value: number) {
   return new Intl.NumberFormat('ru-RU').format(value) + ' т/год';
@@ -61,12 +55,20 @@ export default function MapRussia() {
   const [activeName, setActiveName] = useState<string | null>(null);
   const [hoverName, setHoverName] = useState<string | null>(null);
   const [vp, setVp] = useState({ x: 0, y: 0, k: 1 });
+  const [farmsByRegion, setFarmsByRegion] = useState<Record<string, Farm[]>>({});
 
   useEffect(() => {
     fetch('/data/russia.geojson')
       .then((r) => r.json())
       .then((j) => setGeo(j as GeoJSON))
       .catch(() => setGeo(null));
+  }, []);
+
+  useEffect(() => {
+    fetch('/data/farms.json')
+      .then((r) => r.json())
+      .then((j) => setFarmsByRegion(j as Record<string, Farm[]>))
+      .catch(() => setFarmsByRegion({}));
   }, []);
 
   useEffect(() => {
@@ -86,7 +88,9 @@ export default function MapRussia() {
 
   const width = 1600;
   const height = 900;
-  const active: Region | null = activeName && STUB[activeName] ? STUB[activeName] : null;
+  const activeFarms: Farm[] | null = activeName && farmsByRegion[activeName]
+    ? farmsByRegion[activeName]
+    : null;
 
   return (
     <section ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise">
@@ -135,10 +139,10 @@ export default function MapRussia() {
           </div>
         </div>
         <div className="map-panel relative rounded-2xl border border-cyan/15 bg-black/40 p-6 backdrop-blur-md min-h-[20rem] order-1 lg:order-2">
-          <h4 className="text-2xl font-semibold text-cyan mb-2">{active ? active.name : 'Выберите регион'}</h4>
-          {active ? (
+          <h4 className="text-2xl font-semibold text-cyan mb-2">{activeName ?? 'Выберите регион'}</h4>
+          {activeFarms ? (
             <div className="space-y-3">
-              {active.farms.map((f) => (
+              {activeFarms.map((f) => (
                 <div key={f.name} className="group relative overflow-hidden rounded-md border border-white/10 p-4 bg-ink/60">
                   <div className="absolute inset-0 aqua-shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="flex items-start justify-between gap-4">
@@ -152,7 +156,11 @@ export default function MapRussia() {
               ))}
             </div>
           ) : (
-            <div className="text-white/60">Наведите курсор и кликните по региону на карте.</div>
+            <div className="text-white/60">
+              {activeName
+                ? 'Нет данных по хозяйствам для выбранного региона.'
+                : 'Наведите курсор и кликните по региону на карте.'}
+            </div>
           )}
         </div>
       </div>
