@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -57,6 +57,27 @@ export default function MapRussia() {
   const [vp, setVp] = useState({ x: 0, y: 0, k: 1 });
   const [farmsByRegion, setFarmsByRegion] = useState<Record<string, Farm[]>>({});
 
+  // Normalize region names to improve matching between GeoJSON and farms.json
+  const simplifyName = (value: string) => {
+    return value
+      .toLowerCase()
+      .replace(/\s+/g, ' ')
+      .replace(
+        /(республика|область|край|автономный округ(?:\s*-\s*югра)?|городской округ|ао|ро)\b/gi,
+        ''
+      )
+      .replace(/[^\p{L}\p{N}]+/gu, ' ')
+      .trim();
+  };
+
+  const farmsIndex = useMemo(() => {
+    const index: Record<string, Farm[]> = {};
+    for (const [key, list] of Object.entries(farmsByRegion)) {
+      index[simplifyName(key)] = list;
+    }
+    return index;
+  }, [farmsByRegion]);
+
   useEffect(() => {
     fetch('/data/russia.geojson')
       .then((r) => r.json())
@@ -88,9 +109,14 @@ export default function MapRussia() {
 
   const width = 1600;
   const height = 900;
-  const activeFarms: Farm[] | null = activeName && farmsByRegion[activeName]
-    ? farmsByRegion[activeName]
-    : null;
+  const activeFarms: Farm[] | null = useMemo(() => {
+    if (!activeName) return null;
+    const exact = farmsByRegion[activeName];
+    if (Array.isArray(exact) && exact.length > 0) return exact;
+    const simplified = simplifyName(activeName);
+    const viaIndex = farmsIndex[simplified];
+    return Array.isArray(viaIndex) && viaIndex.length > 0 ? viaIndex : null;
+  }, [activeName, farmsByRegion, farmsIndex]);
 
   return (
     <section ref={sectionRef} className="relative bg-black py-24 md:py-32 aqua-noise">
